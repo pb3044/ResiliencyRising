@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResiliencyRising - Organic Farm Fresh Eggs & Vegetables</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2d5016;
+            --secondary: #8b4513;
+            --accent: #f4a460;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .navbar {
+            background: rgba(45, 80, 22, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff !important;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent) !important;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, rgba(45, 80, 22, 0.75), rgba(139, 69, 19, 0.65)),
+                        url('https://images.unsplash.com/photo-1500076656116-558758c991c1?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .btn-custom {
+            background: var(--accent);
+            color: white;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(244, 164, 96, 0.3);
+        }
+        
+        .btn-custom:hover {
+            background: #e09450;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(244, 164, 96, 0.4);
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+        }
+        
+        .product-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-icon {
+            font-size: 4rem;
+            color: var(--primary);
+            margin: 2rem 0 1rem;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .price-tag {
+            background: var(--accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+        
+        .feed-badge {
+            background: var(--primary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin: 3px;
+            display: inline-block;
+        }
+        
+        .about-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .feature-box {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            margin: 1rem 0;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+        }
+        
+        .contact-item i {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-right: 1.5rem;
+            width: 40px;
+        }
+        
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 90vh;
+            }
+            
+            .product-card {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-leaf"></i> ResiliencyRising
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 hero-content">
+                    <h1>Fresh From Our Farm to Your Table</h1>
+                    <p class="lead">Free-range organic chicken & duck eggs, plus seasonal local vegetables. All raised with premium organic feed including turmeric, hemp seed & quinoa.</p>
+                    <a href="#products" class="btn btn-custom btn-lg">
+                        <i class="fas fa-shopping-basket me-2"></i>View Products
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Our Products</h2>
+                <p class="lead text-muted">Raised with care, delivered with love</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Chicken Eggs -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card">
+                        <img src="https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=600&q=80" alt="Free-range chickens" class="product-image">
+                        <div class="card-body text-center">
+                            <div class="product-icon">
+                                <i class="fas fa-egg"></i>
+                            </div>
+                            <h3 class="card-title">Free-Range Chicken Eggs</h3>
+                            <p class="card-text">Fresh, organic chicken eggs from our happy, free-roaming hens. Fed premium organic feed for superior quality and taste.</p>
+                            <div class="mb-3">
+                                <span class="feed-badge"><i class="fas fa-seedling"></i> Turmeric</span>
+                                <span class="feed-badge"><i class="fas fa-cannabis"></i> Hemp Seed</span>
+                                <span class="feed-badge"><i class="fas fa-leaf"></i> Quinoa</span>
+                            </div>
+                            <div class="price-tag">$8 / Dozen</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Duck Eggs -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card">
+                        <img src="https://images.unsplash.com/photo-1612170153139-6f881ff067e0?w=600&q=80" alt="Ducks" class="product-image">
+                        <div class="card-body text-center">
+                            <div class="product-icon">
+                                <i class="fas fa-duck"></i>
+                            </div>
+                            <h3 class="card-title">Fresh Duck Eggs</h3>
+                            <p class="card-text">Rich, creamy duck eggs perfect for baking and cooking. Our ducks enjoy natural foraging with premium organic supplementation.</p>
+                            <div class="mb-3">
+                                <span class="feed-badge"><i class="fas fa-seedling"></i> Turmeric</span>
+                                <span class="feed-badge"><i class="fas fa-cannabis"></i> Hemp Seed</span>
+                                <span class="feed-badge"><i class="fas fa-leaf"></i> Quinoa</span>
+                            </div>
+                            <div class="price-tag">$8 / Dozen</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seasonal Vegetables -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card">
+                        <img src="https://images.unsplash.com/photo-1597362925123-77861d3fbac7?w=600&q=80" alt="Fresh vegetables" class="product-image">
+                        <div class="card-body text-center">
+                            <div class="product-icon">
+                                <i class="fas fa-carrot"></i>
+                            </div>
+                            <h3 class="card-title">Seasonal Vegetables</h3>
+                            <p class="card-text">Fresh, locally-grown French heritage vegetables available during spring and summer months. Harvested at peak freshness.</p>
+                            <div class="mb-3">
+                                <span class="feed-badge"><i class="fas fa-sun"></i> Spring</span>
+                                <span class="feed-badge"><i class="fas fa-sun"></i> Summer</span>
+                            </div>
+                            <div class="price-tag">Seasonal Pricing</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 about-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">About ResiliencyRising</h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4>Ethical & Humane</h4>
+                        <p>Our chickens and ducks roam freely, enjoying natural foraging and a stress-free environment.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4>100% Organic Feed</h4>
+                        <p>Premium organic diet including turmeric, hemp seed, and quinoa for healthier, tastier eggs.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h4>Local & Fresh</h4>
+                        <p>Supporting our local community with the freshest farm-to-table products from our family farm.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <p class="lead">At ResiliencyRising, we believe in sustainable, ethical farming practices that respect our animals and the environment. Our commitment to quality means using only organic feed and allowing our birds the freedom to live naturally. The result? Superior products you can feel good about.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="lead text-muted">We'd love to hear from you</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong><br>
+                                <a href="mailto:healing7rest@gmail.com" class="text-decoration-none">healing7rest@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Phone</strong><br>
+                                <span>Call us for orders and inquiries</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <div>
+                                <strong>Payment Methods</strong><br>
+                                <span>E-transfer or Cash</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Availability</strong><br>
+                                <span>Fresh eggs year-round | Vegetables: Spring & Summer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-2">&copy; 2025 ResiliencyRising Farm. All rights reserved.</p>
+            <p class="mb-0">
+                <i class="fas fa-leaf me-2"></i>
+                Fresh | Organic | Local
+                <i class="fas fa-leaf ms-2"></i>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Close mobile menu if open
+                    const navCollapse = document.querySelector('.navbar-collapse');
+                    if (navCollapse.classList.contains('show')) {
+                        bootstrap.Collapse.getInstance(navCollapse).hide();
+                    }
+                }
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function (e) {
+            const navCollapse = document.querySelector('.navbar-collapse');
+            const navToggler = document.querySelector('.navbar-toggler');
+            const navbar = document.querySelector('.navbar');
+            
+            if (navCollapse.classList.contains('show') && 
+                !navbar.contains(e.target)) {
+                bootstrap.Collapse.getInstance(navCollapse).hide();
+            }
+        });
+
+        // Add active class to nav items on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
